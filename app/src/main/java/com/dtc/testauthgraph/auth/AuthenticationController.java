@@ -9,6 +9,9 @@ import com.microsoft.identity.client.AuthenticationResult;
 import com.microsoft.identity.client.MsalException;
 import com.microsoft.identity.client.PublicClientApplication;
 
+/**
+ * Contrôleur pour l'authentification
+ */
 public class AuthenticationController {
 
     private final String TAG = AuthenticationController.class.getSimpleName();
@@ -21,7 +24,9 @@ public class AuthenticationController {
 
     private AuthenticationController(){}
 
+    // Singleton qui permet soit creer une nouvelle instance du controller ou obtenir un existant
     public static synchronized AuthenticationController getInstance(Context ctx){
+        // En passant le context on sauve le context qui est l'activity elle-même
         context = ctx;
 
         if(INSTANCE == null){
@@ -39,17 +44,24 @@ public class AuthenticationController {
 
     public PublicClientApplication getPublicClient(){ return publicClientApplication; }
 
+    // Obtention du token dans l'activity en cours
     public void doAcquireToken(Activity activity, final MSALAuthenticationCallback msalCallback){
+        // reçoit le jeton par le callback (msalCallback)
         mActivityCallback = msalCallback;
+        // utilisation des autorisations (Constants.SCOPE)
         publicClientApplication.acquireToken(activity, Constants.SCOPES, getAuthInteractiveCallback());
         Log.d(TAG, "Test" + msalCallback);
     }
 
     public void signOut(){
+        // supprime l'utilisateur actuellement connecté
         publicClientApplication.remove(mAuthResult.getUser());
+        // rénitialisation de l'instance (getInstance)
         AuthenticationController.restInstance();
     }
 
+    // Différentes méthodes de callback en cas de résultat ok ou non
+    // on récupère le résultat dans chaque méthode (mAuthResult) et on le test
     private AuthenticationCallback getAuthInteractiveCallback(){
         return new AuthenticationCallback() {
             @Override

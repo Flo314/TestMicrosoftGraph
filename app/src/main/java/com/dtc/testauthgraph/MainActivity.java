@@ -20,57 +20,46 @@ import com.microsoft.identity.client.User;
 
 public class MainActivity extends AppCompatActivity implements MSALAuthenticationCallback {
 
+    // variable de débug pour le logcat
     private final static String TAG = MainActivity.class.getSimpleName();
-    private int progressStatus = 0;
-    //private TextView textView;
-    private Handler handler = new Handler();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final ProgressBar progressBar = findViewById(R.id.loading);
-        progressBar.setVisibility(View.GONE);
-
+        // button de connection qui affiche une progressBar en attendant la réponse du serveur via la méthode onSignin
         Button btnsign = findViewById(R.id.btnsign);
         btnsign.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
                 onSignin();
             }
         });
 
+        // button de déconnection qui rend la progressBar invisible quand on clique sur le button via la méthode onSignin
         Button btnsignout = findViewById(R.id.btnsignout);
         btnsignout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.GONE);
                 onSignout();
             }
         });
 
-        // Start long running operation in a background thread
-        new Thread(new Runnable() {
-            public void run() {}
-        }).start();
     }
 
+    // se connecter
     private void onSignin() {
         AuthenticationController authenticationController = AuthenticationController.getInstance(this);
         authenticationController.doAcquireToken(this, this);
         Log.d(TAG, "onSigin : " + authenticationController);
-        //Toast.makeText(MainActivity.this,"Hello <user>",Toast.LENGTH_SHORT).show();
     }
 
     // se déconnecter
     private void onSignout() {
         AuthenticationController authenticationController = AuthenticationController.getInstance(this);
         authenticationController.signOut();
-        Log.d(TAG, "onSigin : " + authenticationController);
-        //Toast.makeText(MainActivity.this,"Hello <user>",Toast.LENGTH_SHORT).show();
+        Log.d(TAG, "onSignout : " + authenticationController);
     }
 
     /* quand on veut se connecter on envoi la demande sur le navigateur pour aller prendre l'utilisateur
@@ -78,21 +67,23 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // quand le resultat arrive je vérifie ce que j'ai déjà
+        // quand le resultat arrive je vérifie ce que j'ai déjà (référence de l'authentification controller)
         if(AuthenticationController.getInstance(this).getPublicClient() != null){
             AuthenticationController.getInstance(this).getPublicClient().handleInteractiveRequestRedirect(requestCode, resultCode ,data);
-            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " +data);
+            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data);
         }
     }
 
-    // récupération du résultat de l'authentification
+    // récupération du résultat de l'authentification et affichage du user dans un Toast en cas de succés
     @Override
     public void onMsalAuthSuccess(AuthenticationResult authenticationResult) {
+        // obtient les infos de l'utilisateur
         User user = authenticationResult.getUser();
-        Toast.makeText(MainActivity.this, "Hello" + user.getName()
+        Toast.makeText(MainActivity.this, "Hello " + user.getName()
                 + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
     }
 
+    // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
     @Override
     public void onMsalAuthError(MsalException exception) {
         Log.e(TAG, "Error authenticated" + exception, exception);

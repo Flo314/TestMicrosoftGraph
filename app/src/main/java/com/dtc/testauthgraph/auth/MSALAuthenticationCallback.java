@@ -1,6 +1,5 @@
 package com.dtc.testauthgraph.auth;
 
-import android.hardware.biometrics.BiometricPrompt;
 
 import com.microsoft.identity.client.AuthenticationResult;
 import com.microsoft.identity.client.MsalException;
