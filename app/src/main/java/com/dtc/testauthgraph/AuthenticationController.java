@@ -14,10 +14,10 @@ public class AuthenticationController {
     private final String TAG = AuthenticationController.class.getSimpleName();
     private static AuthenticationController INSTANCE;
     private static PublicClientApplication publicClientApplication;
-    private AuthenticationResult authenticationResult;
+    private AuthenticationResult mAuthResult;
     private static Context context;
 
-    private MSALAuthenticationCallback msalActivityCallback;
+    private MSALAuthenticationCallback mActivityCallback;
 
     private AuthenticationController(){}
 
@@ -35,18 +35,18 @@ public class AuthenticationController {
 
     public static synchronized void restInstance(){ INSTANCE = null; }
 
-    public String getAccessToken(){ return authenticationResult.getAccessToken(); }
+    public String getAccessToken(){ return mAuthResult.getAccessToken(); }
 
     public PublicClientApplication getPublicClient(){ return publicClientApplication; }
 
     public void doAcquireToken(Activity activity, final MSALAuthenticationCallback msalCallback){
-        msalActivityCallback = msalCallback;
+        mActivityCallback = msalCallback;
         publicClientApplication.acquireToken(activity, Constants.SCOPES, getAuthInteractiveCallback());
         Log.d(TAG, "Test" + msalCallback);
     }
 
     public void signOut(){
-        publicClientApplication.remove(authenticationResult.getUser());
+        publicClientApplication.remove(mAuthResult.getUser());
         AuthenticationController.restInstance();
     }
 
@@ -54,25 +54,25 @@ public class AuthenticationController {
         return new AuthenticationCallback() {
             @Override
             public void onSuccess(AuthenticationResult authenticationResult) {
-                authenticationResult = authenticationResult;
-                if(msalActivityCallback != null){
-                    msalActivityCallback.onMsalAuthSuccess(authenticationResult);
-                    Log.e(TAG, "Error authenticated" + msalActivityCallback);
+                mAuthResult = authenticationResult;
+                if(mActivityCallback != null){
+                    mActivityCallback.onMsalAuthSuccess(mAuthResult);
+                    Log.e(TAG, "Error authenticated" + mAuthResult);
                 }
             }
 
             @Override
             public void onError(MsalException exception) {
-                if(msalActivityCallback != null){
-                    msalActivityCallback.onMsalAuthError(exception);
+                if(mActivityCallback != null){
+                    mActivityCallback.onMsalAuthError(exception);
                     Log.e(TAG, "Error authenticated" + exception, exception);
                 }
             }
 
             @Override
             public void onCancel() {
-                if(msalActivityCallback != null){
-                    msalActivityCallback.onMsalAuthCancel();
+                if(mActivityCallback != null){
+                    mActivityCallback.onMsalAuthCancel();
                 }
             }
         };

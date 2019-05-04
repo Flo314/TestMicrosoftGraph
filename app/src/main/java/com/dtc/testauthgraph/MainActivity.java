@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
         //Toast.makeText(MainActivity.this,"Hello <user>",Toast.LENGTH_SHORT).show();
     }
 
-
+    // se déconnecter
     private void onSignout() {
         AuthenticationController authenticationController = AuthenticationController.getInstance(this);
         authenticationController.signOut();
@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
         }
     }
 
+    // récupération du résultat de l'authentification
     @Override
     public void onMsalAuthSuccess(AuthenticationResult authenticationResult) {
         User user = authenticationResult.getUser();
