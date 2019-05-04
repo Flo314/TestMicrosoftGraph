@@ -1,4 +1,4 @@
-package com.dtc.testauthgraph;
+package com.dtc.testauthgraph.auth;
 
 import android.app.Activity;
 import android.content.Context;

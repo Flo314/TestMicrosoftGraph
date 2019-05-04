@@ -1,4 +1,4 @@
-package com.dtc.testauthgraph;
+package com.dtc.testauthgraph.auth;
 
 import android.hardware.biometrics.BiometricPrompt;
 

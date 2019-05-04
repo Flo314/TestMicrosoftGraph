@@ -9,15 +9,16 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dtc.testauthgraph.auth.AuthenticationController;
+import com.dtc.testauthgraph.auth.MSALAuthenticationCallback;
 import com.microsoft.identity.client.AuthenticationResult;
 import com.microsoft.identity.client.MsalException;
 import com.microsoft.identity.client.User;
 
 
-public class MainActivity extends AppCompatActivity implements MSALAuthenticationCallback{
+public class MainActivity extends AppCompatActivity implements MSALAuthenticationCallback {
 
     private final static String TAG = MainActivity.class.getSimpleName();
     private int progressStatus = 0;
@@ -32,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
 
         final ProgressBar progressBar = findViewById(R.id.loading);
         progressBar.setVisibility(View.GONE);
-        //textView = (TextView) findViewById(R.id.textView);
 
         Button btnsign = findViewById(R.id.btnsign);
         btnsign.setOnClickListener(new View.OnClickListener() {
@@ -54,25 +54,7 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
 
         // Start long running operation in a background thread
         new Thread(new Runnable() {
-            public void run() {
-                while (progressStatus < 100) {
-                    progressStatus += 1;
-                    // Update the progress bar and display the
-                    //current value in the text view
-                    handler.post(new Runnable() {
-                        public void run() {
-                            progressBar.setProgress(progressStatus);
-                            //textView.setText(progressStatus+"/"+progressBar.getMax());
-                        }
-                    });
-                    try {
-                        // Sleep for 200 milliseconds.
-                        Thread.sleep(200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            public void run() {}
         }).start();
     }
 

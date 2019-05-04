@@ -1,4 +1,4 @@
-package com.dtc.testauthgraph;
+package com.dtc.testauthgraph.auth;
 
 public class Constants {
     public static final String[] SCOPES = {"openid", "User.Read", "Calendars.Read"};
