@@ -1,14 +1,13 @@
 package com.dtc.testauthgraph;
 
+import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dtc.testauthgraph.auth.AuthenticationController;
@@ -18,10 +17,10 @@ import com.microsoft.identity.client.MsalException;
 import com.microsoft.identity.client.User;
 
 
-public class MainActivity extends AppCompatActivity implements MSALAuthenticationCallback {
+public class LoginActivity extends AppCompatActivity implements MSALAuthenticationCallback {
 
     // variable de débug pour le logcat
-    private final static String TAG = MainActivity.class.getSimpleName();
+    private final static String TAG = LoginActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +71,7 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
             AuthenticationController.getInstance(this).getPublicClient().handleInteractiveRequestRedirect(requestCode, resultCode ,data);
             Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data);
         }
+
     }
 
     // récupération du résultat de l'authentification et affichage du user dans un Toast en cas de succés
@@ -79,8 +79,10 @@ public class MainActivity extends AppCompatActivity implements MSALAuthenticatio
     public void onMsalAuthSuccess(AuthenticationResult authenticationResult) {
         // obtient les infos de l'utilisateur
         User user = authenticationResult.getUser();
-        Toast.makeText(MainActivity.this, "Hello " + user.getName()
+        Toast.makeText(LoginActivity.this, "Hello " + user.getName()
                 + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
+        Context context = LoginActivity.this;
+        startActivity(new Intent(context, MenuApp.class));
     }
 
     // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
