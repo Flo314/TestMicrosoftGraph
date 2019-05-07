@@ -6,8 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -37,15 +35,6 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
                 onSignin();
             }
         });
-
-//        // button de déconnection qui rend la progressBar invisible quand on clique sur le button via la méthode onSignin
-//        Button btnsignout = findViewById(R.id.btnsignout);
-//        btnsignout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onSignout();
-//            }
-//        });
 
     }
 
