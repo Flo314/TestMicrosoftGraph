@@ -6,4 +6,5 @@
     <string name="logo">logo</string>
     <string name="background_gradient">background gradient</string>
     <string name="background_photo">background photo</string>
+    <string name="load">LOAD</string>
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dtc.testauthgraph.auth.AuthenticationController;
@@ -18,6 +19,9 @@ import com.microsoft.identity.client.User;
 
 
 public class LoginActivity extends AppCompatActivity implements MSALAuthenticationCallback {
+
+    Button btnsign;
+    Button btnload;
 
     // variable de débug pour le logcat
     private final static String TAG = LoginActivity.class.getSimpleName();
@@ -41,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     private void onSignin() {
         AuthenticationController authenticationController = AuthenticationController.getInstance(this);
         authenticationController.doAcquireToken(this, this);
-        Log.d(TAG, "onSigin : " + authenticationController);
+        Log.d(TAG, "onSigin : Se connecte ...");
     }
 
 //    // se déconnecter
@@ -71,8 +75,6 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         User user = authenticationResult.getUser();
         Toast.makeText(LoginActivity.this, "Hello " + user.getName()
                 + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
-//        Context context = LoginActivity.this;
-//        startActivity(new Intent(context, MenuApp.class));
     }
 
     // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
@@ -91,4 +93,23 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         Log.d(TAG, "Cancel authenticated");
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.d(TAG, "OnStart : ");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "OnResume : ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "OnPause : ");
+        Button btnload = findViewById(R.id.btnload);
+        btnload.setVisibility(View.VISIBLE);
+    }
 }

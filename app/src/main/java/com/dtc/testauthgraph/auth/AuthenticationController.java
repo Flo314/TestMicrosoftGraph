@@ -6,10 +6,7 @@ import android.util.Log;
 
 import com.microsoft.identity.client.AuthenticationCallback;
 import com.microsoft.identity.client.AuthenticationResult;
-import com.microsoft.identity.client.MsalClientException;
 import com.microsoft.identity.client.MsalException;
-import com.microsoft.identity.client.MsalServiceException;
-import com.microsoft.identity.client.MsalUiRequiredException;
 import com.microsoft.identity.client.PublicClientApplication;
 
 /**
@@ -81,14 +78,6 @@ public class AuthenticationController {
                 if(mActivityCallback != null){
                     mActivityCallback.onMsalAuthError(exception);
                     Log.d(TAG, "Authentication failed: " + exception.toString());
-
-                    if (exception instanceof MsalClientException) {
-                        /* Exception inside MSAL, more info inside MsalError.java */
-                    } else if (exception instanceof MsalServiceException) {
-                        /* Exception when communicating with the STS, likely config issue */
-                    } else if (exception instanceof MsalUiRequiredException) {
-                        /* Tokens expired or no session, retry with interactive */
-                    }
                 }
             }
 

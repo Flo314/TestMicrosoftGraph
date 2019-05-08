@@ -1,10 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <include layout="@layout/content_main"/>
+    <ImageView
+        android:id="@+id/img_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background_photo"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sc" />
+
+    <ImageView
+        android:id="@+id/img_gradient"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/background_gradient"
+        android:src="@drawable/image_visibility"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_logo"
+        android:layout_width="420dp"
+        android:layout_height="230dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.294"
+        app:layout_constraintStart_toStartOf="@+id/img_gradient"
+        app:layout_constraintTop_toTopOf="@+id/img_gradient"
+        app:layout_constraintVertical_bias="0.16000003"
+        app:srcCompat="@drawable/scalian" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="24dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="24dp" />
+
+    <!--<EditText-->
+    <!--android:id="@+id/username"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="40dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:background="@drawable/et_bg"-->
+    <!--android:hint="@string/username"-->
+    <!--android:inputType="textPersonName"-->
+    <!--android:padding="16dp"-->
+    <!--android:textColorHint="@color/login_form_details"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/guideline_right"-->
+    <!--app:layout_constraintStart_toStartOf="@id/guideline_left"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/img_logo" />-->
+
+    <!--<EditText-->
+    <!--android:id="@+id/password"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginStart="8dp"-->
+    <!--android:layout_marginTop="16dp"-->
+    <!--android:layout_marginEnd="8dp"-->
+    <!--android:background="@drawable/et_bg"-->
+    <!--android:hint="@string/password"-->
+    <!--android:inputType="textPassword"-->
+    <!--android:padding="16dp"-->
+    <!--android:textColorHint="@color/login_form_details"-->
+    <!--app:layout_constraintEnd_toEndOf="@id/guideline_right"-->
+    <!--app:layout_constraintStart_toStartOf="@id/guideline_left"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/username" />-->
+
+    <Button
+        android:id="@+id/btnsign"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_bg_log"
+        android:text="@string/login_now"
+        android:visibility="visible"
+        android:textColor="@color/login_form_details_medium"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gradient"
+        app:layout_constraintEnd_toEndOf="@id/guideline_right"
+        app:layout_constraintStart_toStartOf="@id/guideline_left"
+        app:layout_constraintTop_toBottomOf="@+id/img_logo" />
+
+
+    <Button
+        android:id="@+id/btnload"
+        android:layout_width="348dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/btn_bg_load"
+        android:text="@string/load"
+        android:textColor="@color/login_form_details_medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/img_gradient"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnsign"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>
