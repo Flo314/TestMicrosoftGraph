@@ -25,9 +25,8 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
-        // button de connection qui affiche une progressBar en attendant la réponse du serveur via la méthode onSignin
         Button btnsign = findViewById(R.id.btnsign);
         btnsign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,19 +71,19 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         User user = authenticationResult.getUser();
         Toast.makeText(LoginActivity.this, "Hello " + user.getName()
                 + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
-        Context context = LoginActivity.this;
-        startActivity(new Intent(context, MenuApp.class));
+//        Context context = LoginActivity.this;
+//        startActivity(new Intent(context, MenuApp.class));
     }
 
     // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
     @Override
     public void onMsalAuthError(MsalException exception) {
-        Log.e(TAG, "Error authenticated" + exception, exception);
+        Log.e(TAG, "Error authenticated : " + exception, exception);
     }
 
     @Override
     public void onMsalAuthError(Exception exception) {
-        Log.e(TAG, "Error authenticated" + exception, exception);
+        Log.e(TAG, "Error authenticated : " + exception, exception);
     }
 
     @Override
