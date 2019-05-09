@@ -3,12 +3,13 @@ package com.dtc.testauthgraph;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dtc.testauthgraph.auth.AuthenticationController;
@@ -30,6 +31,27 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
+//        // on instancie le fragment manager
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        // on instancie la transaction grâce au fragment manager
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        ButtonFragmentStartMenu buttonFragmentStartMenu = new ButtonFragmentStartMenu();
+//        // on remplace le contenu actuel par le fragment 1
+//        fragmentTransaction.replace(android.R.id.content,buttonFragmentStartMenu);
+//        fragmentTransaction.commit();
+
+        Button btnload = findViewById(R.id.btnload);
+        btnload.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "onCick fragment ...");
+                    Intent intent = new Intent(getApplicationContext(), MenuApp.class);
+                    startActivity(intent);
+            }
+        });
 
         Button btnsign = findViewById(R.id.btnsign);
         btnsign.setOnClickListener(new View.OnClickListener() {
@@ -63,9 +85,8 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // quand le resultat arrive je vérifie ce que j'ai déjà (référence de l'authentification controller)
         if(AuthenticationController.getInstance(this).getPublicClient() != null){
             AuthenticationController.getInstance(this).getPublicClient().handleInteractiveRequestRedirect(requestCode, resultCode ,data);
-            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data);
+            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data.getData());
         }
-
     }
 
     // récupération du résultat de l'authentification et affichage du user dans un Toast en cas de succés
@@ -74,7 +95,8 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // obtient les infos de l'utilisateur
         User user = authenticationResult.getUser();
         Toast.makeText(LoginActivity.this, "Hello " + user.getName()
-                + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
+                + " (" + user.getDisplayableId() + " " + authenticationResult.getIdToken().toString() + ")", Toast.LENGTH_LONG).show();
+
     }
 
     // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
@@ -96,20 +118,37 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d(TAG, "OnStart : ");
+        Log.d(TAG, "OnStart called ");
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(TAG, "OnResume : ");
+        Log.d(TAG, "OnResume called ");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(TAG, "OnPause : ");
+        Log.d(TAG, "OnPause called ");
+
         Button btnload = findViewById(R.id.btnload);
         btnload.setVisibility(View.VISIBLE);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "OnStop called ");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d(TAG, "OnDestroy called ");
+    }
+
+
+
 }

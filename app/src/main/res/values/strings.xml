@@ -7,4 +7,7 @@
     <string name="background_gradient">background gradient</string>
     <string name="background_photo">background photo</string>
     <string name="load">LOAD</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
