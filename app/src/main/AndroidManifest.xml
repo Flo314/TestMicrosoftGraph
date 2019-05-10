@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".screen.MenuApp"/>
+        <activity android:name=".screen.MenuApp"
+            android:theme="@style/Toolbar"/>
 
 
         <activity android:name=".screen.LoginActivity">
