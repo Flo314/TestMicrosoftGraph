@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MenuApp"/>
+        <activity android:name=".screen.MenuApp"/>
 
 
-        <activity android:name=".LoginActivity">
+        <activity android:name=".screen.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

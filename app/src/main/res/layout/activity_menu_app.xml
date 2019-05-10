@@ -8,7 +8,8 @@
     android:padding="10dp"
     android:gravity="center"
     android:background="@color/backgroungcolor"
-    tools:context=".MenuApp">
+    tools:context=".screen.MenuApp">
+
 
 
     <LinearLayout
@@ -268,7 +269,7 @@
                 <ImageView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/cerclebackgroundpurple"
+                    android:background="@drawable/cerclebackgroundblue"
                     android:padding="10dp"
                     android:src="@drawable/ic_lightbulb_outline_black_24dp" />
 

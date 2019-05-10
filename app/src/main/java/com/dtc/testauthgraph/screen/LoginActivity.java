@@ -1,14 +1,16 @@
-package com.dtc.testauthgraph;
+package com.dtc.testauthgraph.screen;
 
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.dtc.testauthgraph.R;
 import com.dtc.testauthgraph.auth.AuthenticationController;
 import com.dtc.testauthgraph.auth.MSALAuthenticationCallback;
 import com.microsoft.identity.client.AuthenticationResult;
@@ -26,16 +28,6 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-//        // on instancie le fragment manager
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//        // on instancie la transaction grâce au fragment manager
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        ButtonFragmentStartMenu buttonFragmentStartMenu = new ButtonFragmentStartMenu();
-//        // on remplace le contenu actuel par le fragment 1
-//        fragmentTransaction.replace(android.R.id.content,buttonFragmentStartMenu);
-//        fragmentTransaction.commit();
-
 //        Button btnload = findViewById(R.id.btnload);
         Button btnsign = findViewById(R.id.btnsign);
         btnsign.setOnClickListener(new View.OnClickListener() {
@@ -45,11 +37,6 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
             }
         });
     }
-//
-//    public void goToActivityMenu(View view){
-//        Intent intent = new Intent(this, MenuApp.class);
-//        startActivity(intent);
-//    }
 
     // se connecter
     private void onSignin() {

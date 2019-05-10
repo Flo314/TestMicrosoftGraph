@@ -20,7 +20,7 @@
         app:titleTextColor="@color/login_form_details"/>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
