@@ -1,10 +1,7 @@
 package com.dtc.testauthgraph;
 
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,9 +17,6 @@ import com.microsoft.identity.client.User;
 
 
 public class LoginActivity extends AppCompatActivity implements MSALAuthenticationCallback {
-
-    Button btnsign;
-    Button btnload;
 
     // variable de débug pour le logcat
     private final static String TAG = LoginActivity.class.getSimpleName();
@@ -42,17 +36,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
 //        fragmentTransaction.replace(android.R.id.content,buttonFragmentStartMenu);
 //        fragmentTransaction.commit();
 
-        Button btnload = findViewById(R.id.btnload);
-        btnload.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View v) {
-                Log.d(TAG, "onCick fragment ...");
-                    Intent intent = new Intent(getApplicationContext(), MenuApp.class);
-                    startActivity(intent);
-            }
-        });
-
+//        Button btnload = findViewById(R.id.btnload);
         Button btnsign = findViewById(R.id.btnsign);
         btnsign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,8 +44,12 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
                 onSignin();
             }
         });
-
     }
+//
+//    public void goToActivityMenu(View view){
+//        Intent intent = new Intent(this, MenuApp.class);
+//        startActivity(intent);
+//    }
 
     // se connecter
     private void onSignin() {
@@ -85,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // quand le resultat arrive je vérifie ce que j'ai déjà (référence de l'authentification controller)
         if(AuthenticationController.getInstance(this).getPublicClient() != null){
             AuthenticationController.getInstance(this).getPublicClient().handleInteractiveRequestRedirect(requestCode, resultCode ,data);
-            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data.getData());
+            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data);
         }
     }
 
@@ -95,19 +83,23 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // obtient les infos de l'utilisateur
         User user = authenticationResult.getUser();
         Toast.makeText(LoginActivity.this, "Hello " + user.getName()
-                + " (" + user.getDisplayableId() + " " + authenticationResult.getIdToken().toString() + ")", Toast.LENGTH_LONG).show();
+                + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
+        Log.d(TAG, "Successfully authenticated");
+        Log.d(TAG, "ID Token: " + authenticationResult.getIdToken());
 
+        Intent intent = new Intent(this, MenuApp.class);
+        startActivity(intent);
     }
 
     // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
     @Override
     public void onMsalAuthError(MsalException exception) {
-        Log.e(TAG, "Error authenticated : " + exception, exception);
+        Log.e(TAG, "Error authenticated : " + exception.toString(), exception);
     }
 
     @Override
     public void onMsalAuthError(Exception exception) {
-        Log.e(TAG, "Error authenticated : " + exception, exception);
+        Log.e(TAG, "Error authenticated : " + exception.toString(), exception);
     }
 
     @Override
@@ -115,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         Log.d(TAG, "Cancel authenticated");
     }
 
+    /*-------------------- Cycle de vie Activity ------------------------------------------------*/
     @Override
     protected void onStart() {
         super.onStart();
@@ -133,8 +126,6 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         super.onPause();
         Log.d(TAG, "OnPause called ");
 
-        Button btnload = findViewById(R.id.btnload);
-        btnload.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -148,7 +139,4 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         super.onDestroy();
         Log.d(TAG, "OnDestroy called ");
     }
-
-
-
 }

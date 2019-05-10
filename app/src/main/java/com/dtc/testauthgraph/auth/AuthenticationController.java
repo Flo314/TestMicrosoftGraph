@@ -50,7 +50,7 @@ public class AuthenticationController {
         mActivityCallback = msalCallback;
         // utilisation des autorisations (Constants.SCOPE)
         publicClientApplication.acquireToken(activity, Constants.SCOPES, getAuthInteractiveCallback());
-        Log.d(TAG, "Test : " + publicClientApplication.toString());
+//        Log.d(TAG, "Test : " + publicClientApplication.toString());
     }
 
     public void signOut(){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -11,40 +11,28 @@
     tools:context=".MenuApp">
 
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_menu"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimaryDark"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
-        app:title="Dashboard"
-        app:titleTextColor="@color/login_form_details"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <LinearLayout
-        android:clipToPadding="false"
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="428dp"
+        android:clipToPadding="false"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_menu"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="10dp">
 
         <!-- First item -->
         <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+
             android:clickable="true"
             android:focusable="true"
-
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -53,8 +41,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/cerclebackgroundpurple"
                     android:contentDescription="icon"
                     android:padding="10dp"
@@ -65,9 +53,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="Collaborateurs"
+                    android:textSize="12dp"
                     android:textStyle="bold" />
 
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
@@ -79,7 +68,8 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="Check your team activities"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="10dp" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -87,13 +77,13 @@
 
         <!-- Second item -->
         <android.support.v7.widget.CardView
-            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:layout_margin="10dp"
+
             android:clickable="true"
             android:focusable="true"
-
-            android:layout_width="160dp"
-            android:layout_height="190dp"
-            android:layout_margin="10dp">
+            android:foreground="?android:attr/selectableItemBackground">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -102,8 +92,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/cerclebackgroundpink"
                     android:padding="10dp"
                     android:src="@drawable/ic_lightbulb_outline_black_24dp" />
@@ -113,9 +103,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="A faire"
+                    android:textSize="12dp"
                     android:textStyle="bold" />
 
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
@@ -127,7 +118,8 @@
                     android:gravity="center"
                     android:padding="5dp"
                     android:text="Check your team activities"
-                    android:textColor="@android:color/darker_gray" />
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="10dp" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -151,8 +143,8 @@
             android:clickable="true"
             android:focusable="true"
 
-            android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp">
 
             <LinearLayout
@@ -162,8 +154,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/cerclebackgroundgreen"
                     android:padding="10dp"
                     android:src="@drawable/ic_lightbulb_outline_black_24dp" />
@@ -173,9 +165,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="A faire"
+                    android:textSize="12dp"
                     android:textStyle="bold" />
 
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
@@ -186,6 +179,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
+                    android:textSize="10dp"
                     android:text="Check your team activities"
                     android:textColor="@android:color/darker_gray" />
 
@@ -199,8 +193,8 @@
             android:clickable="true"
             android:focusable="true"
 
-            android:layout_width="160dp"
-            android:layout_height="190dp"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
             android:layout_margin="10dp">
 
             <LinearLayout
@@ -210,8 +204,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/cercleackgroundyello"
                     android:padding="10dp"
                     android:src="@drawable/ic_lightbulb_outline_black_24dp" />
@@ -221,9 +215,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="A faire"
+                    android:textSize="12dp"
                     android:textStyle="bold" />
 
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
@@ -234,6 +229,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
+                    android:textSize="10dp"
                     android:text="Check your team activities"
                     android:textColor="@android:color/darker_gray" />
 
@@ -259,7 +255,7 @@
             android:clickable="true"
             android:focusable="true"
 
-            android:layout_width="340dp"
+            android:layout_width="260dp"
             android:layout_height="150dp"
             android:layout_margin="10dp">
 
@@ -270,8 +266,8 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:background="@drawable/cerclebackgroundpurple"
                     android:padding="10dp"
                     android:src="@drawable/ic_lightbulb_outline_black_24dp" />
@@ -281,9 +277,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="A faire"
+                    android:textSize="12dp"
                     android:textStyle="bold" />
 
-                <view
+                <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_margin="10dp"
@@ -294,6 +291,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="5dp"
+                    android:textSize="10dp"
                     android:text="Check your team activities"
                     android:textColor="@android:color/darker_gray" />
 
@@ -304,4 +302,4 @@
 
     </LinearLayout>
 
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

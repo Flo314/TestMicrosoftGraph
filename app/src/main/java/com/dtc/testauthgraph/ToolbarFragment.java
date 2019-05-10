@@ -16,10 +16,9 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BlankFragment extends Fragment {
+public class ToolbarFragment extends Fragment {
 
-    Button btnload;
-    public BlankFragment() {
+    public ToolbarFragment() {
         // Required empty public constructor
     }
 
@@ -28,12 +27,11 @@ public class BlankFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_blank, container, false);
+        return inflater.inflate(R.layout.toolbar, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btnload = (Button) view.findViewById(R.id.btnload);
     }
 }
