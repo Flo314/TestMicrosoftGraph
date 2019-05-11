@@ -10,14 +10,14 @@
         android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/actionBarTheme"
         android:background="@drawable/btn_bg_load"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/Base.Theme.AppCompat.Light.DarkActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Dashboard"
-        app:titleTextColor="@color/login_form_details"/>
+        app:titleTextColor="@color/login_form_details" />
 
     <ImageButton
         android:id="@+id/logout"
