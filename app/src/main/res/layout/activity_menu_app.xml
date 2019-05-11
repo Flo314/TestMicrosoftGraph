@@ -29,6 +29,7 @@
             android:layout_width="120dp"
             android:layout_height="150dp"
             android:layout_margin="10dp"
+            android:onClick="displayCollab"
 
             android:clickable="true"
             android:focusable="true"

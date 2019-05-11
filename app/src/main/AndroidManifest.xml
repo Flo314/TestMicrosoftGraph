@@ -12,11 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".screen.MenuApp"
-            android:theme="@style/Toolbar"/>
-
-
+        <activity android:name=".screen.Collaborators"
+            android:parentActivityName=".screen.MenuApp"
+            android:theme="@style/Toolbar">
+        </activity>
+        <activity
+            android:name=".screen.MenuApp"
+            android:theme="@style/Toolbar" />
         <activity android:name=".screen.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +26,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -37,6 +38,7 @@
                     android:scheme="msal40a245ff-e9a1-42d4-9ff8-62d90675057e" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
