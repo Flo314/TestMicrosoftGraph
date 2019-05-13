@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.dtc.testauthgraph.R;
@@ -21,11 +22,14 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
 
     // variable de débug pour le logcat
     private final static String TAG = LoginActivity.class.getSimpleName();
+    private ProgressBar mProgress = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mProgress = findViewById(R.id.progressbar);
 
 //        Button btnload = findViewById(R.id.btnload);
         Button btnsign = findViewById(R.id.btnsign);
@@ -37,11 +41,30 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         });
     }
 
+    private void showProgressBar() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mProgress.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private void hideProgressBar() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                mProgress.setVisibility(View.GONE);
+            }
+        });
+    }
+
     // se connecter
     private void onSignin() {
         AuthenticationController authenticationController = AuthenticationController.getInstance(this);
         authenticationController.doAcquireToken(this, this);
         Log.d(TAG, "onSigin : Se connecte ...");
+        showProgressBar();
     }
 
 //    // se déconnecter
@@ -59,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
         // quand le resultat arrive je vérifie ce que j'ai déjà (référence de l'authentification controller)
         if(AuthenticationController.getInstance(this).getPublicClient() != null){
             AuthenticationController.getInstance(this).getPublicClient().handleInteractiveRequestRedirect(requestCode, resultCode ,data);
-            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data);
+            Log.d(TAG, "requestCode : " + requestCode + "resultCode : " + resultCode + "data : " + data.toString());
         }
     }
 
@@ -118,6 +141,7 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
     protected void onStop() {
         super.onStop();
         Log.d(TAG, "OnStop called ");
+        hideProgressBar();
     }
 
     @Override

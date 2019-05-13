@@ -16,7 +16,7 @@ public class AuthenticationController {
 
     private final String TAG = AuthenticationController.class.getSimpleName();
     private static AuthenticationController INSTANCE;
-    private static PublicClientApplication publicClientApplication;
+    private static PublicClientApplication publicClientApplication = null;
     private AuthenticationResult mAuthResult;
     private static Context context;
 
@@ -25,7 +25,7 @@ public class AuthenticationController {
     private AuthenticationController(){}
 
     // Singleton qui permet soit creer une nouvelle instance du controller ou obtenir un existant
-    public static synchronized AuthenticationController getInstance(Context ctx){
+    private static synchronized AuthenticationController getInstance(Context ctx){
         // En passant le context on sauve le context qui est l'activity elle-même
         context = ctx;
 
@@ -38,11 +38,17 @@ public class AuthenticationController {
         return INSTANCE;
     }
 
-    public static synchronized void restInstance(){ INSTANCE = null; }
+    public static synchronized void restInstance(){
+        INSTANCE = null;
+    }
 
-    public String getAccessToken(){ return mAuthResult.getAccessToken(); }
+    public String getAccessToken(){
+        return mAuthResult.getAccessToken();
+    }
 
-    public PublicClientApplication getPublicClient(){ return publicClientApplication; }
+    public PublicClientApplication getPublicClient(){
+        return publicClientApplication;
+    }
 
     // Obtention du token dans l'activity en cours
     public void doAcquireToken(Activity activity, final MSALAuthenticationCallback msalCallback){

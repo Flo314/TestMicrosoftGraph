@@ -1,5 +1,6 @@
 package com.dtc.testauthgraph.screen;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,8 +25,6 @@ public class Collaborators extends AppCompatActivity {
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_load));
             actionBar.setTitle("Collaborateurs");
         }
-
-
 
     }
 
