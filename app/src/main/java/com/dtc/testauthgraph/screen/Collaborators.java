@@ -6,7 +6,13 @@ import android.os.Bundle;
 
 import com.dtc.testauthgraph.R;
 
+
+
 public class Collaborators extends AppCompatActivity {
+
+
+
+    private final static String TAG = Collaborators.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +24,9 @@ public class Collaborators extends AppCompatActivity {
             actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_load));
             actionBar.setTitle("Collaborateurs");
         }
+
+
+
     }
+
 }

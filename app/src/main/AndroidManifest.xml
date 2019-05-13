@@ -26,6 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--Cela permet à MSAL d'utiliser un navigateur pour authentifier l'utilisateur-->
+        <!--et enregistre votre URI de redirection comme étant géré par l'application-->
         <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
