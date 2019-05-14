@@ -55,7 +55,7 @@ public class AuthenticationController {
         // reçoit le jeton par le callback (msalCallback)
         mActivityCallback = msalCallback;
         // utilisation des autorisations (Constants.SCOPE)
-        publicClientApplication.acquireToken(activity, Constants.SCOPES, getAuthInteractiveCallback());
+        publicClientApplication.acquireToken(activity, Constants.SCOPES, getAuthSilentCallback());
 //        Log.d(TAG, "Test : " + publicClientApplication.toString());
     }
 
@@ -68,7 +68,7 @@ public class AuthenticationController {
 
     // Différentes méthodes de callback en cas de résultat ok ou non
     // on récupère le résultat dans chaque méthode (mAuthResult) et on le test
-    private AuthenticationCallback getAuthInteractiveCallback(){
+    private AuthenticationCallback getAuthSilentCallback(){
         return new AuthenticationCallback() {
             @Override
             public void onSuccess(AuthenticationResult authenticationResult) {

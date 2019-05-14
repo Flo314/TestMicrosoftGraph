@@ -95,9 +95,10 @@ public class LoginActivity extends AppCompatActivity implements MSALAuthenticati
                 + " (" + user.getDisplayableId() + ")", Toast.LENGTH_LONG).show();
         Log.d(TAG, "Successfully authenticated");
         Log.d(TAG, "ID Token: \n" + authenticationResult.getIdToken());
-
+        getCacheDir();
         Intent intent = new Intent(this, MenuApp.class);
         startActivity(intent);
+//        finish();
     }
 
     // implémentation des méthode de l'interface MSALAuthenticationCallback pour personnaliser le résultat
