@@ -25,7 +25,7 @@ public class MenuApp extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         if(actionBar != null){
-            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.btn_bg_load));
+            actionBar.setBackgroundDrawable(getResources().getDrawable(R.drawable.image_visibility));
             actionBar.setTitle("Dashboard");
         }
 

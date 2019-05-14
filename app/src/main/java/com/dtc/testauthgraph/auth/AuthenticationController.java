@@ -25,7 +25,7 @@ public class AuthenticationController {
     private AuthenticationController(){}
 
     // Singleton qui permet soit creer une nouvelle instance du controller ou obtenir un existant
-    private static synchronized AuthenticationController getInstance(Context ctx){
+    public static synchronized AuthenticationController getInstance(Context ctx){
         // En passant le context on sauve le context qui est l'activity elle-même
         context = ctx;
 

@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/btn_bg_log"
+        android:background="@drawable/btn_bg_load"
         android:text="@string/login_now"
         android:visibility="visible"
         android:textColor="@color/login_form_details_medium"
